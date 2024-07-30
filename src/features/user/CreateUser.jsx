@@ -6,6 +6,7 @@ function CreateUser() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(username);
   }
 
   return (
