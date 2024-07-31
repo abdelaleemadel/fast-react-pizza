@@ -1,15 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    cart: [
-        {
-            pizzaId: 12,
-            name: 'Mediterranean',
-            quantity: 2,
-            totalPrice: 32,
-            unitPrice: 16
-        }
-    ]
+    cart: []
 }
 const cartSlice = createSlice({
     name: 'cart',
@@ -33,7 +25,8 @@ const cartSlice = createSlice({
             //payload = itemId
             const item = state.cart.find(item => item.pizzaId === action.payload);
             item.quantity--;
-            item.totalPrice = item.quantity * item.unitPrice
+            item.totalPrice = item.quantity * item.unitPrice;
+            if (item.quantity === 0) cartSlice.caseReducers.deleteItem(state, action)
         },
         clearCart(state) {
             state.cart = [];
