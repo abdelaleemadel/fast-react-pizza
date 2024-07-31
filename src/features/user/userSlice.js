@@ -14,7 +14,7 @@ const initialState = {
   error: '',
   address: ''
 }
-const fetchAddress = createAsyncThunk('user/fetchAddress', async function () {
+export const fetchAddress = createAsyncThunk('user/fetchAddress', async function () {
 
   const positionObj = await getPosition();
   const position = {

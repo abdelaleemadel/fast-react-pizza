@@ -12,8 +12,10 @@ const isValidPhone = (str) =>
 export async function createOrderAction({ request }) {
     const errors = {};
 
+
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
+
     const order = {
         ...data,
         priority: data.priority === "true",
@@ -26,4 +28,5 @@ export async function createOrderAction({ request }) {
     const newOrder = await createOrder(order);
     store.dispatch(clearCart());
     return redirect(`/order/${newOrder.id}`);
+
 }
